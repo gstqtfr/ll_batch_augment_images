@@ -1,0 +1,6 @@
+inp_img_pth : /home/johnny/Documents/job-stuff/livelink/YOLOv8/ll-datasets/downloaded-from-roboflow/1st_Nov_2022_log_03_a.v1i.yolov8/train/images
+inp_lab_pth : /home/johnny/Documents/job-stuff/livelink/YOLOv8/ll-datasets/downloaded-from-roboflow/1st_Nov_2022_log_03_a.v1i.yolov8/train/labels
+out_img_pth : /home/johnny/Documents/job-stuff/livelink/YOLOv8/ll-datasets/albumental-downloaded-from-roboflow/1st_Nov_2022_log_03_a.v1i.yolov8/train/images
+out_lab_pth : /home/johnny/Documents/job-stuff/livelink/YOLOv8/ll-datasets/albumental-downloaded-from-roboflow/1st_Nov_2022_log_03_a.v1i.yolov8/train/labels
+transformed_file_name : aug_out
+CLASSES : [drone]
