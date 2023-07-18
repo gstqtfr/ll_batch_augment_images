@@ -20,17 +20,20 @@ def get_album_bb_lists(yolo_str_labels, classes):
     return album_bb_lists
 
 
-def get_bboxes_list(inp_lab_pth, classes):
+def get_bboxes_list(inp_lab_pth, classes, verbose=False):
     yolo_str_labels = open(inp_lab_pth, "r").read()     
     if yolo_str_labels:
         if "\n" in yolo_str_labels:
-            print("multi-objs")
+            if verbose:
+                print("multi-objs")
             album_bb_lists = get_album_bb_lists(yolo_str_labels, classes)        
-        else:        
-            print("single line ")
+        else:
+            if verbose:
+                print("single line ")
             album_bb_lists = get_album_bb_list(yolo_str_labels, classes)
             album_bb_lists = [album_bb_lists]  # require 2d list in alumbentation function
     else:
-        print("No object")
+        if verbose:
+            print("No object")
         album_bb_lists = []
     return album_bb_lists
