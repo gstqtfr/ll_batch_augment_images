@@ -4,7 +4,6 @@ from controller.save_augs import save_aug_image, save_aug_lab
 from controller.validate_results import draw_yolo
 import albumentations as A
 
-
 def apply_aug(image, bboxes, out_lab_pth, out_img_pth, transformed_file_name, classes, verbose=True):
     transform = A.Compose([
         A.RandomCrop(width=300, height=300),
@@ -21,27 +20,17 @@ def apply_aug(image, bboxes, out_lab_pth, out_img_pth, transformed_file_name, cl
     # JKK: boundary boxes, rather than the len(transformed_bboxes); what happens if this is
     # JKK: is zero?
     # JKK: hacked the code to make it behave itself
-    # TODO: JKK: get rid of the print-as-debug krap below
 
     transformed_objs = len(transformed)
-    print(f"apply_aug: we'll be outputting to file {out_img_pth}")
-    print(f"apply_aug: length of transformed objects: {transformed_objs}")
 
     if transformed_objs != 0:
-        if transformed_objs == 1:
-            print(f"apply_aug: transformed_bboxes: {transformed_bboxes}")
-            print(f"apply_aug: calling single_obj_bb_yolo_conversion")
-            transformed_bboxes = [single_obj_bb_yolo_conversion(transformed_bboxes[0]), classes]
-            print(f"apply_aug: called single_obj_bb_yolo_conversion")
-            print(f"apply_aug: calling save_aug_lab")
-            save_aug_lab(transformed_bboxes, out_lab_pth, transformed_file_name + ".txt")
-            print(f"apply_aug: called save_aug_lab")
         if transformed_objs > 1:
             transformed_bboxes = multi_obj_bb_yolo_conversion(transformed_bboxes, classes)
-            print(f"apply_aug: calling save_aug_lab")
             save_aug_lab(transformed_bboxes, out_lab_pth, transformed_file_name + ".txt")
-            print(f"apply_aug: called save_aug_lab")
+        else:
+            transformed_bboxes = [single_obj_bb_yolo_conversion(transformed_bboxes[0]), classes]
+            save_aug_lab(transformed_bboxes, out_lab_pth, transformed_file_name + ".txt")
         save_aug_image(transformed_image, out_img_pth, transformed_file_name + ".png")
         draw_yolo(transformed_image, transformed_bboxes)
     else:
-        print("label file is empty")
+        print(f"label file is empty")
