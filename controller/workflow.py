@@ -6,15 +6,12 @@ from progress.bar import Bar
 from controller.apply_album_aug import apply_aug
 from controller.get_album_bb import get_bboxes_list
 
-with open("contants.yaml", 'r') as stream:
-    CONSTANTS = yaml.safe_load(stream)
+def run_pipeline(yaml_file):
 
-def run_pipeline():
+    with open(yaml_file, 'r') as stream:
+        CONSTANTS = yaml.safe_load(stream)
+
     imgs = os.listdir(CONSTANTS["inp_img_pth"])
-
-    # for i in progressbar(range(100)):
-
-    # JKK: bloody here!
 
     with Bar('Processing...', max=len(imgs)) as bar:
         for i, img_file in enumerate(imgs):

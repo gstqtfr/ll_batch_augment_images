@@ -3,3 +3,4 @@ get_yolo_aug.py
 .idea/
 *~
 *.pyc
+.ipynb_checkpoints/

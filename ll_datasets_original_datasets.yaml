@@ -1,0 +1,6 @@
+inp_img_pth: /home/johnny/Documents/job-stuff/livelink/YOLOv8/ll-datasets/original-yolo-format/all-dates/images
+inp_lab_pth: /home/johnny/Documents/job-stuff/livelink/YOLOv8/ll-datasets/original-yolo-format/all-dates/labels
+out_img_pth : /home/johnny/Documents/job-stuff/livelink/YOLOv8/ll-datasets/combined-yolo-format/images
+out_lab_pth : /home/johnny/Documents/job-stuff/livelink/YOLOv8/ll-datasets/combined-yolo-format/labels
+transformed_file_name : aug_out
+CLASSES : [drone]
